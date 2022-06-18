@@ -9,4 +9,5 @@ export const Container = styled.div`
     position: relative;
     justify-content: center;
     align-items: center;
+    opacity: 2;
 `;

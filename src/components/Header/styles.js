@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ImgUrl from '../../assets/cover.png'
 
 export const Container = styled.div`
     display: flex;
@@ -6,26 +7,54 @@ export const Container = styled.div`
 `;
 
 export const ContainerMenu = styled.div`
-    background-color: #ff0;
-    width: 20%;
+    background-color: #181c2e;
+    width: 20vw;
     height: 100vh;
 `;
 
 export const ContainerMenuAreaImg = styled.div`
-    height: 30vh;
-    background-color: #ff0000;
+    height: 25vh;
+    background: url(${ImgUrl});//img importada
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & img{
+        width: 40%;
+        height: 60%;
+    }
 `;
 
 export const ContainerMenuAreaOptions = styled.div`
     margin-top: 1rem;
-    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    transition: ease-in-out .4s;
+
+    & :hover{
+        background-color: #212121;
+    }
 `;
 
 export const ContainerMenuAreaOptionsOption = styled.div`
-    margin-bottom: 1rem;
+    padding-left: 1rem;
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 3rem;
+    width: 100%;
+
+    & a{
+        color: #fff;
+        margin-left: 1rem;
+    }
+    
 `;
 
-export const ContainerContext = styled.div``;

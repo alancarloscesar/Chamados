@@ -18,7 +18,6 @@ export default function Dashboard(){
         }
     },[])
 
-    
 
     function Sair(){
         signOut();
@@ -26,10 +25,6 @@ export default function Dashboard(){
     }
 
     return(
-        // <div>
-        //     <h1>Pagina Dashboard...</h1>
-        //     <button onClick={Sair}>Sair do sistema</button>
-        // </div>
         <Header/>
     )
 }
