@@ -23,9 +23,6 @@ export const MainProfile = styled.div`
     margin-bottom: 1em;
     margin-top: 1.5rem;
 
-    & h1{
-        top:1%;
-    }
 `;
 
 export const MainProfileForm = styled.form`
@@ -40,6 +37,12 @@ export const LabelProfileImg = styled.label`
     align-items: center;
     flex-direction: column;
     cursor: pointer;
+
+
+    & img{
+        border-radius: 50%;
+        object-fit: cover;
+    }
 `;
 
 
@@ -68,6 +71,7 @@ export const LabelProfile = styled.label`
 
 export const InputProfileImg = styled.input`
     display: none;
+
 `;
 
 export const InputProfile = styled.input`

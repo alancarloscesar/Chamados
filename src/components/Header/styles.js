@@ -25,8 +25,10 @@ export const ContainerMenuAreaImg = styled.div`
     align-items: center;
 
     & img{
-        width: 40%;
-        height: 60%;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+
     }
 `;
 
