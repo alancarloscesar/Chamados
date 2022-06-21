@@ -19,12 +19,14 @@ function AuthProvider({ children }){
             const storageUserCheck = localStorage.getItem('SistemaUser');
 
             if(storageUserCheck){
+                setUser(JSON.parse(storageUserCheck))
                 setUserStatus(true);
                 setLoading(false);
-                return;
-            }else{
+                console.log(user)
+            }
+             else{
                 setUserStatus(false)
-                return;
+                setLoading(false)
             }            
         }
         loadingStorage();
