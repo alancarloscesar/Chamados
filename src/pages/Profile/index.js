@@ -1,9 +1,10 @@
-import React,{useState, useContext} from 'react'
+import React,{useState, useContext, useEffect} from 'react'
 import Header from '../../components/Header'
 import Title from '../../components/Title'
 import {FiSettings,FiUpload} from 'react-icons/fi'
 import avatar from '../../assets/avatar.png'
 import firebase from '../../services/firebaseConnection'
+import { useNavigate } from 'react-router-dom'
 
 import { AuthContext } from '../../contexts/auth'
 
@@ -14,12 +15,25 @@ import {Container,ContextHeaderTitle, ContextMain,
 
 export default function Profile(){
 
-    const { user, setUser, storageUser } = useContext(AuthContext);
+    const { user, setUser, storageUser, userStatus } = useContext(AuthContext);
 
     const [nome, setNome] = useState(user && user.nome)
     const [email, setEmail] = useState(user && user.email)
     const [avatarUrl, setAvatarUrl] = useState(user && user.avatarUrl)
     const [imageAvatar, setImageAvatar] = useState(null)
+
+    const navigate = useNavigate();
+
+
+    useEffect(()=>{
+        if(!userStatus){//se não tiver user vindo do context
+            navigate('/')//navega para o index
+            return;
+        }else{
+            navigate('/profile')//fica nessa page
+            return;
+        }
+    },[])
 
     //funçao de preview da img do upload, onchange dentro do input file
     function handleFile(e){
@@ -93,7 +107,6 @@ export default function Profile(){
         }else if(nome !== '' && imageAvatar !== null){//se quer editar o nome e a img
             handleUpload();//chama a função de upload, firebase/storage
         }
-
     }
 
     return(
