@@ -2,9 +2,9 @@ import {useEffect,useContext} from 'react';
 import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth';
 
-import './styles'
+import './stylesSistema'
 import { Container,ContextMenu, ContextBody, ContextMenuLogo,BtnTeste, ContextMenuUl, 
-  ContextMenuli, Linka, Form, Input } from './styles';
+  ContextMenuli, Linka, Form, Input } from './stylesSistema';
 
 
 

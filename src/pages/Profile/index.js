@@ -150,7 +150,6 @@ export default function Profile(){
                                 <ButtonProfile type='submit'>Salvar</ButtonProfile>
                             </AreaInputButton>
 
-
                         </MainProfileForm>
                     </MainProfile>
                 </ContextMain>

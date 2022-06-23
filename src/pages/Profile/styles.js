@@ -10,7 +10,7 @@ export const ContextHeaderTitle = styled.div`
 `;
 
 export const ContextMain = styled.div`
-    margin: 2rem 5rem;
+    margin: 2em 2em 0em 2em;
     width: 100%;
 `;
 
@@ -75,7 +75,7 @@ export const InputProfileImg = styled.input`
 `;
 
 export const InputProfile = styled.input`
-    margin-bottom: 1.5em;
+    margin-bottom: 1em;
     font-size: 18px;
     padding: 0.4em .6em;
     border: 0;
