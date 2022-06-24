@@ -32,6 +32,8 @@ export const MainDash = styled.div`
         justify-content: center;
         align-items: center;
         transition: ease-in 0.2s;
+        float: right;
+        margin: 2em 0 1em 0;
 
         color: #fff;
         font-weight: 600;
