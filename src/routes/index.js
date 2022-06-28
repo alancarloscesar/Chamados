@@ -5,6 +5,7 @@ import Dashboard from "../pages/Dashboard";
 import Private from "./Private";
 import Profile from "../pages/Profile";
 import Customers from "../pages/Customers";
+import New from "../pages/New";
 // import RouteWrapper from './RouteIF'
 
 export default function RoutesUrl(){
@@ -16,6 +17,7 @@ export default function RoutesUrl(){
                 <Route caseSensitive path="/dashboard" element={<Dashboard/>}/>
                 <Route caseSensitive path="/profile" element={<Profile/>} />
                 <Route caseSensitive path="/customers" element={<Customers/>} isPrivate />
+                <Route caseSensitive path="/chamados" element={<New/>} />
                 {/* <Route path="*" element={<NotFound/>} /> */}
             </Routes>
         </BrowserRouter>

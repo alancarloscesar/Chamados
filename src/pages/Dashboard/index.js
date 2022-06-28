@@ -48,7 +48,7 @@ export default function Dashboard(){
 
                             <MainDash>
                                 <SpanMainDash>Nenhum chamado registrado.</SpanMainDash>
-                                <Link to='/new'>
+                                <Link to='/chamados'>
                                         <FiPlus size={25} color='#fff' />
                                         Novo Chamado
                                 </Link>
@@ -56,7 +56,7 @@ export default function Dashboard(){
                             </MainDash>
                         ) : (
                             <>
-                                <Link to='/new' className='BtnCadastrar'>
+                                <Link to='/chamados' className='BtnCadastrar'>
                                         <FiPlus size={25} color='#fff' />
                                         Novo Chamado
                                 </Link>

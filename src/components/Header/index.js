@@ -29,7 +29,7 @@ export default function Header(){
                 <ContainerMenuAreaOptions>
                     <ContainerMenuAreaOptionsOption>
                         <FiMonitor color="#fff" size={25} />
-                        <Link to='/dashboard'>Chamados</Link>
+                        <Link to='/chamados'>Chamados</Link>
                     </ContainerMenuAreaOptionsOption>
 
                     <ContainerMenuAreaOptionsOption>
