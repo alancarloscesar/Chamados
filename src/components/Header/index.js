@@ -1,6 +1,7 @@
 import React,{useContext, useEffect} from "react";
 import {AuthContext} from '../../contexts/auth'
-import { FiMonitor,FiUsers,FiSettings,FiLogOut  } from "react-icons/fi";
+import { FiMonitor,FiUsers,FiSettings,FiLogOut } from "react-icons/fi";
+import {AiOutlineDashboard} from 'react-icons/ai'
 import { Link, useNavigate } from "react-router-dom";
 import avatar from '../../assets/avatar.png'
 
@@ -27,6 +28,12 @@ export default function Header(){
                     <img src={user === null ? avatar : user.avatarUrl } alt='Imagem do avatar' />
                 </ContainerMenuAreaImg>
                 <ContainerMenuAreaOptions>
+
+                    <ContainerMenuAreaOptionsOption>
+                        <AiOutlineDashboard color="#fff" size={25} />
+                        <Link to='/dashboard'>Dashboard</Link>
+                    </ContainerMenuAreaOptionsOption>
+
                     <ContainerMenuAreaOptionsOption>
                         <FiMonitor color="#fff" size={25} />
                         <Link to='/chamados'>Chamados</Link>

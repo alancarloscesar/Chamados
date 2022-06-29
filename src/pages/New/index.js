@@ -67,7 +67,7 @@ export default function New(){
         await firebase.firestore().collection('chamados')
         .add({
             created: new Date(),
-            cliete: customers[customerSelected].nomeFantasia,
+            cliente: customers[customerSelected].nomeFantasia,
             clienteId: customers[customerSelected].id,
             assunto: assuntos,
             status: status,

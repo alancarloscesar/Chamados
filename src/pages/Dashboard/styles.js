@@ -50,3 +50,14 @@ export const MainDash = styled.div`
 export const SpanMainDash = styled.span`
 
 `;
+
+export const ButtonMore = styled.button`
+    background-color: #5cb;
+    border: 0;
+    height: 1.7rem;
+    width: 10rem;
+    color: #fff;
+    margin-top: 1rem;
+
+
+`;
