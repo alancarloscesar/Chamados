@@ -8,6 +8,7 @@ import {FiMessageSquare, FiPlus, FiSearch, FiEdit} from 'react-icons/fi'
 import {format} from 'date-fns'
 import firebase from '../../services/firebaseConnection'
 import './tableDashboard.css'
+import Modal from '../../components/Modal';
 
 import { Container, ContextHeaderTitle, ContextMain, MainDash, SpanMainDash, ButtonMore } from './styles'
 
@@ -21,6 +22,10 @@ export default function Dashboard(){
     const [loadingMore, setLoadingMore] = useState(false);
     const [isEmpty, setIsEmpty] = useState(false);
     const [lastDocs, setLastDocs] = useState();
+
+
+    const [showPostModal, setShowPostModal] = useState(false);
+    const [detail, setDetail] = useState();
 
 
     const listRef = firebase.firestore().collection('chamados').orderBy('created','desc');//buscando collection e ordenando decrescente
@@ -98,6 +103,11 @@ export default function Dashboard(){
         })
     }
 
+    function togglePostModal(item){//função que chamará o modal passando o item(linha da tabela)
+        setShowPostModal(!showPostModal)//trocando de true para false
+        setDetail(item)
+    }
+
 
     if(loading){
         return(
@@ -173,11 +183,11 @@ export default function Dashboard(){
                                                 <td data-label="Cliente">{item.cliente}</td>
                                                 <td data-label="Assunto">{item.assunto}</td>
                                                 <td data-label="Status">
-                                                    <span className="badge" style={{backgroundColor: item.status === 'Aberto' ? '#5cb85c' : '#999' }}>{item.status}</span>
+                                                    <span className="badge" style={{backgroundColor: item.status === 'Em Aberto' ? '#5cb85c' : '#999' }}>{item.status}</span>
                                                 </td>
                                                 <td data-label="Cadastrado">{item.createdFormated}</td>
                                                 <td data-label="#">
-                                                    <button className="action" style={{backgroundColor: '#3583f6' }}>
+                                                    <button className="action" style={{backgroundColor: '#3583f6' }} onClick={()=>togglePostModal(item)}>
                                                         <FiSearch color="#FFF" size={17} />
                                                     </button>
                                                     <button className="action" style={{backgroundColor: '#F6a935' }}>
@@ -202,6 +212,13 @@ export default function Dashboard(){
             </ContextHeaderTitle>
         </Container>
             
+        {showPostModal && (
+            <Modal
+                conteudo={detail}
+                close={togglePostModal}
+            />
+        )}
+        
         </>
     )
 }
