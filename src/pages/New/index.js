@@ -5,6 +5,7 @@ import {FiPlusCircle} from 'react-icons/fi'
 import { AuthContext } from '../../contexts/auth'
 import firebase from '../../services/firebaseConnection'
 import { toast } from 'react-toastify'
+import { useNavigate, useParams} from 'react-router-dom'
 
 import {Container, ContainerNew, ContextHeaderTitle, ContextMain
         ,FormNew, LabelNew, SelectNew,OptionNew,
@@ -12,7 +13,10 @@ import {Container, ContainerNew, ContextHeaderTitle, ContextMain
 } from './styles'
 
 export default function New(){
-      
+    
+    const {id} = useParams()
+    const navigate = useNavigate()
+
     const [loadCustomers, setLoadCustomers] = useState(true);
     const [customers, setCustomers] = useState([]);
     const [customerSelected, setCustomerSelected] = useState(0);
@@ -20,6 +24,8 @@ export default function New(){
     const [assuntos, setAssuntos] = useState('Suporte')
     const [status, setStatus] = useState('Em Aberto')
     const [complemento, setComplemento] = useState('')
+
+    const [idCustomer, setIdCustomer] = useState(false)
 
     const {user} = useContext(AuthContext)
 
@@ -44,6 +50,11 @@ export default function New(){
                 }
                 setCustomers(lista);
                 setLoadCustomers(false);
+
+                if(id){
+                    loadId(lista);
+                }
+
             })
             .catch((error)=>{
                 console.log('DEU ALGUM ERRO!', error);
@@ -54,6 +65,24 @@ export default function New(){
         loadCustomers();
     },[])
 
+    async function loadId(lista){
+        await firebase.firestore().collection('chamados').doc(id)
+        .get()
+        .then((snapshot)=>{
+            setAssuntos(snapshot.data().assunto);
+            setStatus(snapshot.data().status)
+            setComplemento(snapshot.data().complemento)
+
+            let index = lista.findIndex(item => item.id === snapshot.data().clienteId);
+            setCustomerSelected(index)
+            setIdCustomer(true)
+        })
+        .catch((error)=>{
+            console.log('erro ao buscar id: ',error)
+            setIdCustomer(false)
+        })
+    }
+
       //Chamado quando troca de cliente
   function handleChangeCustomers(e){
     //console.log('INDEX DO CLIENTE SELECIONADO: ', e.target.value);
@@ -63,6 +92,32 @@ export default function New(){
 
     async function handleAddNew(e){
         e.preventDefault();
+
+        if(idCustomer){//se for true é pq é uma alteração e não u
+            await firebase.firestore().collection('chamados').doc(id)
+            .update({
+                cliente: customers[customerSelected].nomeFantasia,
+                clienteId: customers[customerSelected].id,
+                assunto: assuntos,
+                status: status,
+                complemento: complemento,
+                userID: user.uid
+            })
+            .then(()=>{
+                toast.info('Chamado editado com sucesso!!!')
+                setComplemento('')
+                setCustomerSelected(0)
+
+                navigate('/dashboard')
+
+            })
+            .catch((error)=>{
+                toast.error('Ops, erro ao editar o chamado.')
+                console.log('Erro ao editar: ',error)
+            })
+
+            return;
+        }
 
         await firebase.firestore().collection('chamados')
         .add({

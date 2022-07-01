@@ -18,6 +18,7 @@ export default function RoutesUrl(){
                 <Route caseSensitive path="/profile" element={<Profile/>} />
                 <Route caseSensitive path="/customers" element={<Customers/>} isPrivate />
                 <Route caseSensitive path="/chamados" element={<New/>} />
+                <Route caseSensitive path="/chamados/:id" element={<New/>} />
                 {/* <Route path="*" element={<NotFound/>} /> */}
             </Routes>
         </BrowserRouter>

@@ -39,7 +39,6 @@ export const ButtonCloseModal = styled.button`
     display: flex;
     justify-content: space-around;
     align-items: center;
-
 `;
 
 export const ContentModalArea = styled.div`
