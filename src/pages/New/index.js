@@ -27,7 +27,17 @@ export default function New(){
 
     const [idCustomer, setIdCustomer] = useState(false)
 
-    const {user} = useContext(AuthContext)
+    const {user, userStatus } = useContext(AuthContext)
+
+    useEffect(()=>{
+        if(!userStatus){
+            navigate('/')
+            return;
+        }else{
+            navigate('/chamados')
+            return;
+        }
+    },[])
 
     useEffect(()=>{
         async function loadCustomers(){
@@ -182,7 +192,7 @@ export default function New(){
                                 name='radio'
                                 value='Aberto'
                                 checked={status === 'Em Aberto'}
-                                onChange={(e) => setAssuntos(e.target.value)}
+                                onChange={(e) => setStatus(e.target.value)}
                                 />
                             <SpanNew>Em Aberto</SpanNew>
 
@@ -191,7 +201,7 @@ export default function New(){
                                 name='radio'
                                 value='Progresso'
                                 checked={status === 'Progresso'}
-                                onChange={(e) => setAssuntos(e.target.value)}
+                                onChange={(e) => setStatus(e.target.value)}
                                 />
                             <SpanNew>Progresso</SpanNew>
 
@@ -200,7 +210,7 @@ export default function New(){
                                 name='radio'
                                 value='Atendido'
                                 checked={status === 'Atendido'}
-                                onChange={(e) => setAssuntos(e.target.value)}
+                                onChange={(e) => setStatus(e.target.value)}
                                 />
                             <SpanNew>Atendido</SpanNew>
                         </AreaInputsRadio>

@@ -144,7 +144,7 @@ export default function Dashboard(){
 
                 <ContextMain>
                     {/* Enviando para o childrem o icone e um name(prop) configurando la no componente title */}
-                    <Title name="Meu perfil">
+                    <Title name="Dashboard">
                         <FiMessageSquare size={25} color='#000' />
                     </Title>
 
